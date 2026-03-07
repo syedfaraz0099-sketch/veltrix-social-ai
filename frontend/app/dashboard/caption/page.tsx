@@ -22,6 +22,7 @@ export default function CaptionPage() {
     const data = await res.json()
 
     setCaption(data.caption)
+
     setLoading(false)
   }
 
@@ -35,7 +36,7 @@ export default function CaptionPage() {
         placeholder="Enter topic..."
         value={topic}
         onChange={(e) => setTopic(e.target.value)}
-        style={{ padding: "10px", width: "300px", marginTop: "20px" }}
+        style={{ padding: "10px", width: "350px" }}
       />
 
       <br /><br />
