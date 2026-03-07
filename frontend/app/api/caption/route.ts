@@ -2,8 +2,7 @@ import OpenAI from "openai"
 
 export async function POST(req: Request) {
 
-  const body = await req.json()
-  const topic = body.topic
+  const { topic } = await req.json()
 
   const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY
@@ -14,18 +13,22 @@ export async function POST(req: Request) {
     messages: [
       {
         role: "system",
-        content: "You are a social media marketing expert."
+        content: "You are a social media strategist."
       },
       {
         role: "user",
-        content: `Write a powerful Instagram caption about ${topic} with hashtags.`
+        content: `Create a 30 day social media content plan about ${topic}. 
+        Each post must include:
+        topic
+        caption
+        hashtags
+        media idea`
       }
     ]
   })
 
-  const caption = completion.choices[0].message.content
-
   return Response.json({
-    caption
+    plan: completion.choices[0].message.content
   })
+
 }
