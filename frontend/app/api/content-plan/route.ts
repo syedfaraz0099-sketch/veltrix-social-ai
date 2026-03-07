@@ -19,10 +19,10 @@ export async function POST(req: Request) {
         role: "user",
         content: `Create a 30 day social media content plan about ${topic}.
 Each post must include:
-topic
-caption
-hashtags
-media idea`
+Topic
+Caption
+Hashtags
+Media idea`
       }
     ]
   })
