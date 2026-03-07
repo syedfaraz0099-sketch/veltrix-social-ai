@@ -13,6 +13,8 @@ export default function CaptionPage() {
       <br /><br />
 
       <button style={{ padding: "10px 20px" }}>
+
+        
         Generate Caption
       </button>
     </div>
