@@ -1,27 +1,16 @@
-import OpenAI from "openai"
-
 export async function POST(req: Request) {
-  try {
-    const { topic } = await req.json()
 
-    const openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY
-    })
+  const { topic } = await req.json()
 
-    const response = await openai.responses.create({
-      model: "gpt-4o-mini",
-      input: `Write a powerful Instagram caption about ${topic} with emojis and hashtags.`
-    })
+  const fakeCaption = `
+🌿 ${topic} is where creativity meets sustainability.
 
-    return Response.json({
-      caption: response.output_text
-    })
+Bring natural beauty into your feed with timeless inspiration.
 
-  } catch (error) {
-    console.error("AI ERROR:", error)
+#Indigo #NaturalDye #SustainableFashion #EcoTextiles
+`
 
-    return Response.json({
-      caption: "AI service error. Check API key or billing."
-    })
-  }
+  return Response.json({
+    caption: fakeCaption
+  })
 }
