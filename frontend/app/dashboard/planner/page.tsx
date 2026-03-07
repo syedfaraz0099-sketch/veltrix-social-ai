@@ -8,17 +8,26 @@ export default function PlannerPage() {
 
   const generatePlan = async () => {
 
-    const response = await fetch("/api/planner", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ topic })
-    })
+    if (!topic) return
 
-    const data = await response.json()
+    try {
 
-    setPlan(data.plan)
+      const response = await fetch("/api/planner", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ topic })
+      })
+
+      const data = await response.json()
+
+      setPlan(data.plan)
+
+    } catch (error) {
+      setPlan("Error generating plan")
+    }
+
   }
 
   return (
@@ -31,21 +40,42 @@ export default function PlannerPage() {
         placeholder="Enter topic..."
         value={topic}
         onChange={(e) => setTopic(e.target.value)}
-        style={{ padding: "10px", width: "350px" }}
+        style={{
+          padding: "10px",
+          width: "350px",
+          marginTop: "10px"
+        }}
       />
 
       <br /><br />
 
       <button
         onClick={generatePlan}
-        style={{ padding: "10px 20px" }}
+        style={{
+          padding: "10px 20px",
+          cursor: "pointer"
+        }}
       >
         Generate 30 Day Plan
       </button>
 
-      <br /><br />
+      <div style={{ marginTop: "30px", width: "500px" }}>
 
-      <pre>{plan}</pre>
+        {plan && plan.split("\n").map((line, index) => (
+
+          <div
+            key={index}
+            style={{
+              padding: "10px",
+              borderBottom: "1px solid #ddd"
+            }}
+          >
+            {line}
+          </div>
+
+        ))}
+
+      </div>
 
     </div>
   )
