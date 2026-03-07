@@ -1,0 +1,36 @@
+"use client"
+
+import { useState } from "react"
+
+export default function CalendarPage() {
+
+  const [posts, setPosts] = useState([
+    { day: "Day 1", post: "Introduction post" },
+    { day: "Day 2", post: "Educational carousel" },
+    { day: "Day 3", post: "Behind the scenes" }
+  ])
+
+  return (
+    <div>
+      <h1>Content Calendar</h1>
+
+      <table style={{ width: "100%", marginTop: "20px" }}>
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Content Idea</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {posts.map((item, index) => (
+            <tr key={index}>
+              <td>{item.day}</td>
+              <td>{item.post}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
