@@ -13,11 +13,11 @@ export async function POST(req: Request) {
     messages: [
       {
         role: "system",
-        content: "You are a social media expert."
+        content: "You are a social media strategist."
       },
       {
         role: "user",
-        content: `Write an engaging Instagram caption about ${topic}. Include emojis and hashtags.`
+        content: `Write a powerful Instagram caption about ${topic} with emojis and hashtags`
       }
     ]
   })
@@ -25,5 +25,4 @@ export async function POST(req: Request) {
   return Response.json({
     caption: completion.choices[0].message.content
   })
-
 }
