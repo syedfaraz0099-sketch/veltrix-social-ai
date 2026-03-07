@@ -1,0 +1,59 @@
+"use client"
+
+import { useState } from "react"
+
+export default function CalendarPage() {
+
+  const [posts] = useState([
+    { day: "Day 1", idea: "Introduction post about your brand" },
+    { day: "Day 2", idea: "Educational carousel" },
+    { day: "Day 3", idea: "Behind the scenes" },
+    { day: "Day 4", idea: "Reel idea" },
+    { day: "Day 5", idea: "Tips & tricks" },
+    { day: "Day 6", idea: "Customer story" },
+    { day: "Day 7", idea: "Weekly recap" },
+    { day: "Day 8", idea: "Product highlight" },
+    { day: "Day 9", idea: "Tutorial post" },
+    { day: "Day 10", idea: "Industry facts" }
+  ])
+
+  return (
+    <div style={{ padding: "20px" }}>
+      
+      <h1 style={{ fontSize: "28px", marginBottom: "20px" }}>
+        Content Calendar
+      </h1>
+
+      <table style={{
+        width: "100%",
+        borderCollapse: "collapse"
+      }}>
+        
+        <thead>
+          <tr style={{ background: "#f3f3f3" }}>
+            <th style={{ padding: "10px", border: "1px solid #ddd" }}>Day</th>
+            <th style={{ padding: "10px", border: "1px solid #ddd" }}>Post Idea</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {posts.map((post, index) => (
+            <tr key={index}>
+              
+              <td style={{ padding: "10px", border: "1px solid #ddd" }}>
+                {post.day}
+              </td>
+
+              <td style={{ padding: "10px", border: "1px solid #ddd" }}>
+                {post.idea}
+              </td>
+
+            </tr>
+          ))}
+        </tbody>
+
+      </table>
+
+    </div>
+  )
+}
