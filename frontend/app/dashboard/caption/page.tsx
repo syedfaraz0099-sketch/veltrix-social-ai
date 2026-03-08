@@ -26,20 +26,22 @@ export default function CaptionsPage() {
 
   return (
 
-    <div className="container">
+    <div style={{padding:"40px"}}>
 
       <h1>Caption History</h1>
 
-      <div className="cards">
-
-        {captions.map((item)=>(
-          <div className="card" key={item.id}>
-            <p>{item.caption}</p>
-          </div>
-        ))}
-
-      </div>
+      {captions.map((item)=>(
+        <div key={item.id} style={{
+          background:"#fff",
+          padding:"15px",
+          marginTop:"10px",
+          borderRadius:"8px"
+        }}>
+          {item.caption}
+        </div>
+      ))}
 
     </div>
+
   )
 }
