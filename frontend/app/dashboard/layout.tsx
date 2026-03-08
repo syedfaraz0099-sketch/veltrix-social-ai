@@ -12,35 +12,40 @@ export default function DashboardLayout({
   const [open,setOpen] = useState(false)
 
   return (
-    <div className="dashboard">
+    <div>
 
-      {/* Mobile Topbar */}
+      {/* Mobile top bar */}
 
       <div className="mobile-topbar">
         <button onClick={()=>setOpen(!open)}>☰</button>
         <h2>Veltrix AI</h2>
       </div>
 
-      {/* Sidebar */}
+      <div className="dashboard">
 
-      <div className={`sidebar ${open ? "show" : ""}`}>
-        <h2>Veltrix AI</h2>
+        {/* Sidebar */}
 
-        <Link href="/dashboard">Dashboard</Link>
-        <Link href="/dashboard/caption">Caption Generator</Link>
-        <Link href="/dashboard/planner">Content Planner</Link>
-        <Link href="/dashboard/calendar">Calendar</Link>
-        <Link href="/dashboard/ideas">Content Ideas</Link>
-        <Link href="/dashboard/analytics">Analytics</Link>
-        <Link href="/dashboard/settings">Settings</Link>
+        <div className={`sidebar ${open ? "show" : ""}`}>
+
+          <h2>Veltrix AI</h2>
+
+          <Link href="/dashboard">Dashboard</Link>
+          <Link href="/dashboard/caption">Caption Generator</Link>
+          <Link href="/dashboard/planner">Content Planner</Link>
+          <Link href="/dashboard/calendar">Calendar</Link>
+          <Link href="/dashboard/ideas">Content Ideas</Link>
+          <Link href="/dashboard/analytics">Analytics</Link>
+          <Link href="/dashboard/settings">Settings</Link>
+
+        </div>
+
+        {/* Main content */}
+
+        <div className="main">
+          {children}
+        </div>
+
       </div>
-
-      {/* Main Content */}
-
-      <div className="main">
-        {children}
-      </div>
-
     </div>
   )
 }
