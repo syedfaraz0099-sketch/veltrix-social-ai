@@ -1,4 +1,4 @@
-export default function DashboardPage() {
+export default function Dashboard() {
   return (
     <div>
 
@@ -9,17 +9,17 @@ export default function DashboardPage() {
 
         <div className="card">
           <h3>Captions Generated</h3>
-          <p>2</p>
+          <p style={{fontSize:"26px",marginTop:"10px"}}>2</p>
         </div>
 
         <div className="card">
           <h3>Content Plans</h3>
-          <p>0</p>
+          <p style={{fontSize:"26px",marginTop:"10px"}}>0</p>
         </div>
 
         <div className="card">
           <h3>Scheduled Posts</h3>
-          <p>0</p>
+          <p style={{fontSize:"26px",marginTop:"10px"}}>0</p>
         </div>
 
       </div>
