@@ -1,59 +1,62 @@
-import React from "react"
-import Link from "next/link"
+"use client"
 
 export default function DashboardLayout({
-  children,
+children,
 }: {
-  children: React.ReactNode
+children: React.ReactNode
 }) {
-  return (
-    <div style={{ display: "flex", minHeight: "100vh" }}>
+return (
+<div style={{ display: "flex" }}>
 
-      {/* Sidebar */}
-      <aside
-        style={{
-          width: "220px",
-          background: "#111",
-          color: "white",
-          padding: "20px"
-        }}
-      >
-        <h2>Veltrix AI</h2>
+  {/* Sidebar */}
+  <div
+    style={{
+      width: "220px",
+      background: "#000",
+      color: "#fff",
+      minHeight: "100vh",
+      padding: "20px",
+    }}
+  >
+    <h2>Veltrix AI</h2>
 
-        <nav style={{ marginTop: "30px" }}>
+    <div style={{ marginTop: "30px", display: "flex", flexDirection: "column", gap: "12px" }}>
 
-          <Link href="/dashboard" style={{display:"block", marginBottom:"12px", color:"white"}}>
-            Dashboard
-          </Link>
+      <a href="/dashboard" style={{ color: "#fff" }}>Dashboard</a>
 
-          <Link href="/dashboard/caption" style={{display:"block", marginBottom:"12px", color:"white"}}>
-            Caption Generator
-          </Link>
+      <a href="/dashboard/caption" style={{ color: "#fff" }}>
+        Caption Generator
+      </a>
 
-          <Link href="/dashboard/planner" style={{display:"block", marginBottom:"12px", color:"white"}}>
-            Content Planner
-          </Link>
+      <a href="/dashboard/planner" style={{ color: "#fff" }}>
+        Content Planner
+      </a>
 
-          <Link href="/dashboard/calendar" style={{display:"block", marginBottom:"12px", color:"white"}}>
-            Calendar
-          </Link>
+      <a href="/dashboard/calendar" style={{ color: "#fff" }}>
+        Calendar
+      </a>
 
-          <Link href="/dashboard/analytics" style={{display:"block", marginBottom:"12px", color:"white"}}>
-            Analytics
-          </Link>
+      <a href="/dashboard/ideas" style={{ color: "#fff" }}>
+        Content Ideas
+      </a>
 
-          <Link href="/dashboard/settings" style={{display:"block", marginBottom:"12px", color:"white"}}>
-            Settings
-          </Link>
+      <a href="/dashboard/analytics" style={{ color: "#fff" }}>
+        Analytics
+      </a>
 
-        </nav>
-      </aside>
-
-      {/* Page Content */}
-      <main style={{ flex: 1, padding: "40px" }}>
-        {children}
-      </main>
+      <a href="/dashboard/settings" style={{ color: "#fff" }}>
+        Settings
+      </a>
 
     </div>
-  )
+  </div>
+
+  {/* Page Content */}
+  <div style={{ flex: 1, padding: "40px" }}>
+    {children}
+  </div>
+
+</div>
+
+)
 }
