@@ -1,16 +1,10 @@
 import { NextResponse } from "next/server"
-import OpenAI from "openai"
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-})
 
 export async function POST(req: Request) {
 
   try {
 
-    const body = await req.json()
-    const topic = body.topic
+    const { topic } = await req.json()
 
     if (!topic) {
       return NextResponse.json({
@@ -18,28 +12,23 @@ export async function POST(req: Request) {
       })
     }
 
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4.1-mini",
-      messages: [
-        {
-          role: "user",
-          content: `Write an engaging Instagram caption about ${topic}. Include emojis and hashtags.`,
-        },
-      ],
-    })
+    const captions = [
+      `Nature creates the most beautiful colors 🌿✨ ${topic} is where sustainability meets creativity. #naturaldye #sustainablefashion`,
+      `Turning plants into pigments 🌱🎨 Discover the beauty of ${topic}. #plantdye #naturalfashion`,
+      `Slow fashion starts with nature 🍃 ${topic} keeps tradition alive. #sustainability #textiledesign`
+    ]
 
-    const caption = completion.choices[0].message.content
+    const randomCaption =
+      captions[Math.floor(Math.random() * captions.length)]
 
     return NextResponse.json({
-      caption: caption
+      caption: randomCaption
     })
 
-  } catch (error: any) {
-
-    console.log("OPENAI ERROR:", error)
+  } catch (error) {
 
     return NextResponse.json({
-      error: error.message || "OpenAI request failed"
+      error: "Failed to generate caption"
     })
 
   }
