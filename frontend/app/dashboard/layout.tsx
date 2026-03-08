@@ -3,44 +3,70 @@
 import { useState } from "react"
 import Link from "next/link"
 
-export default function DashboardLayout({ children }:{
-children:React.ReactNode
-}){
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
 
-const [open,setOpen]=useState(false)
+  const [open, setOpen] = useState(false)
 
-return(
+  const closeSidebar = () => {
+    setOpen(false)
+  }
 
-<div>
+  return (
+    <div className="dashboard-container">
 
-<div className="mobile-header">
-<button onClick={()=>setOpen(!open)}>☰</button>
-<h2>Veltrix AI</h2>
-</div>
+      {/* MOBILE HEADER */}
 
-<div className="dashboard-container">
+      <div className="mobile-header">
+        <button onClick={() => setOpen(!open)}>☰</button>
+        <h2>Veltrix AI</h2>
+      </div>
 
-<div className={`sidebar ${open?"active":""}`}>
 
-<h2>Veltrix AI</h2>
+      {/* SIDEBAR */}
 
-<Link href="/dashboard">Dashboard</Link>
-<Link href="/dashboard/caption">Caption Generator</Link>
-<Link href="/dashboard/planner">Content Planner</Link>
-<Link href="/dashboard/calendar">Calendar</Link>
-<Link href="/dashboard/ideas">Content Ideas</Link>
-<Link href="/dashboard/analytics">Analytics</Link>
-<Link href="/dashboard/settings">Settings</Link>
+      <div className={`sidebar ${open ? "active" : ""}`}>
 
-</div>
+        <h2>Veltrix AI</h2>
 
-<div className="main-content">
-{children}
-</div>
+        <Link href="/dashboard" onClick={closeSidebar}>Dashboard</Link>
 
-</div>
+        <Link href="/dashboard/caption" onClick={closeSidebar}>
+          Caption Generator
+        </Link>
 
-</div>
+        <Link href="/dashboard/planner" onClick={closeSidebar}>
+          Content Planner
+        </Link>
 
-)
+        <Link href="/dashboard/calendar" onClick={closeSidebar}>
+          Calendar
+        </Link>
+
+        <Link href="/dashboard/ideas" onClick={closeSidebar}>
+          Content Ideas
+        </Link>
+
+        <Link href="/dashboard/analytics" onClick={closeSidebar}>
+          Analytics
+        </Link>
+
+        <Link href="/dashboard/settings" onClick={closeSidebar}>
+          Settings
+        </Link>
+
+      </div>
+
+
+      {/* MAIN CONTENT */}
+
+      <div className="main-content">
+        {children}
+      </div>
+
+    </div>
+  )
 }
