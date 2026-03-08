@@ -1,58 +1,70 @@
 "use client"
 
+import Link from "next/link"
+
 export default function DashboardLayout({
 children,
 }: {
 children: React.ReactNode
 }) {
+
 return (
-<div style={{ display: "flex" }}>
+<div style={{ display: "flex", fontFamily: "sans-serif" }}>
 
   {/* Sidebar */}
   <div
     style={{
-      width: "220px",
-      background: "#000",
+      width: "230px",
+      background: "#111",
       color: "#fff",
       minHeight: "100vh",
-      padding: "20px",
+      padding: "25px"
     }}
   >
-    <h2>Veltrix AI</h2>
 
-    <div style={{ marginTop: "30px", display: "flex", flexDirection: "column", gap: "12px" }}>
+    <h2 style={{ marginBottom: "40px" }}>Veltrix AI</h2>
 
-      <a href="/dashboard" style={{ color: "#fff" }}>Dashboard</a>
+    <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
 
-      <a href="/dashboard/caption" style={{ color: "#fff" }}>
+      <Link href="/dashboard" style={{ color: "#fff" }}>Dashboard</Link>
+
+      <Link href="/dashboard/caption" style={{ color: "#fff" }}>
         Caption Generator
-      </a>
+      </Link>
 
-      <a href="/dashboard/planner" style={{ color: "#fff" }}>
+      <Link href="/dashboard/planner" style={{ color: "#fff" }}>
         Content Planner
-      </a>
+      </Link>
 
-      <a href="/dashboard/calendar" style={{ color: "#fff" }}>
+      <Link href="/dashboard/calendar" style={{ color: "#fff" }}>
         Calendar
-      </a>
+      </Link>
 
-      <a href="/dashboard/ideas" style={{ color: "#fff" }}>
+      <Link href="/dashboard/ideas" style={{ color: "#fff" }}>
         Content Ideas
-      </a>
+      </Link>
 
-      <a href="/dashboard/analytics" style={{ color: "#fff" }}>
+      <Link href="/dashboard/analytics" style={{ color: "#fff" }}>
         Analytics
-      </a>
+      </Link>
 
-      <a href="/dashboard/settings" style={{ color: "#fff" }}>
+      <Link href="/dashboard/settings" style={{ color: "#fff" }}>
         Settings
-      </a>
+      </Link>
 
     </div>
+
   </div>
 
-  {/* Page Content */}
-  <div style={{ flex: 1, padding: "40px" }}>
+  {/* Main Content */}
+  <div
+    style={{
+      flex: 1,
+      padding: "40px",
+      background: "#f5f5f5",
+      minHeight: "100vh"
+    }}
+  >
     {children}
   </div>
 
