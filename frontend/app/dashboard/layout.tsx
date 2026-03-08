@@ -3,72 +3,33 @@
 import Link from "next/link"
 
 export default function DashboardLayout({
-children,
+  children,
 }: {
-children: React.ReactNode
+  children: React.ReactNode
 }) {
+  return (
+    <div className="dashboard">
 
-return (
-<div style={{ display: "flex", fontFamily: "sans-serif" }}>
+      {/* Sidebar */}
 
-  {/* Sidebar */}
-  <div
-    style={{
-      width: "230px",
-      background: "#111",
-      color: "#fff",
-      minHeight: "100vh",
-      padding: "25px"
-    }}
-  >
+      <div className="sidebar">
+        <h2>Veltrix AI</h2>
 
-    <h2 style={{ marginBottom: "40px" }}>Veltrix AI</h2>
+        <Link href="/dashboard">Dashboard</Link>
+        <Link href="/dashboard/caption">Caption Generator</Link>
+        <Link href="/dashboard/planner">Content Planner</Link>
+        <Link href="/dashboard/calendar">Calendar</Link>
+        <Link href="/dashboard/ideas">Content Ideas</Link>
+        <Link href="/dashboard/analytics">Analytics</Link>
+        <Link href="/dashboard/settings">Settings</Link>
+      </div>
 
-    <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+      {/* Main content */}
 
-      <Link href="/dashboard" style={{ color: "#fff" }}>Dashboard</Link>
-
-      <Link href="/dashboard/caption" style={{ color: "#fff" }}>
-        Caption Generator
-      </Link>
-
-      <Link href="/dashboard/planner" style={{ color: "#fff" }}>
-        Content Planner
-      </Link>
-
-      <Link href="/dashboard/calendar" style={{ color: "#fff" }}>
-        Calendar
-      </Link>
-
-      <Link href="/dashboard/ideas" style={{ color: "#fff" }}>
-        Content Ideas
-      </Link>
-
-      <Link href="/dashboard/analytics" style={{ color: "#fff" }}>
-        Analytics
-      </Link>
-
-      <Link href="/dashboard/settings" style={{ color: "#fff" }}>
-        Settings
-      </Link>
+      <div className="main">
+        {children}
+      </div>
 
     </div>
-
-  </div>
-
-  {/* Main Content */}
-  <div
-    style={{
-      flex: 1,
-      padding: "40px",
-      background: "#f5f5f5",
-      minHeight: "100vh"
-    }}
-  >
-    {children}
-  </div>
-
-</div>
-
-)
+  )
 }
