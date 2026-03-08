@@ -1,15 +1,13 @@
 import { NextResponse } from "next/server"
 import OpenAI from "openai"
-import { supabase } from "../../lib/supabase"
+import { supabase } from "../../../lib/supabase"
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 })
 
 export async function POST(req: Request) {
-
   try {
-
     const { topic } = await req.json()
 
     const completion = await openai.chat.completions.create({
@@ -33,11 +31,8 @@ export async function POST(req: Request) {
     })
 
   } catch (error) {
-
     return NextResponse.json({
       error: "Failed to generate caption"
     })
-
   }
-
 }
