@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import Link from "next/link"
 
 export default function DashboardLayout({
@@ -7,12 +8,22 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode
 }) {
+
+  const [open,setOpen] = useState(false)
+
   return (
     <div className="dashboard">
 
+      {/* Mobile Topbar */}
+
+      <div className="mobile-topbar">
+        <button onClick={()=>setOpen(!open)}>☰</button>
+        <h2>Veltrix AI</h2>
+      </div>
+
       {/* Sidebar */}
 
-      <div className="sidebar">
+      <div className={`sidebar ${open ? "show" : ""}`}>
         <h2>Veltrix AI</h2>
 
         <Link href="/dashboard">Dashboard</Link>
@@ -24,7 +35,7 @@ export default function DashboardLayout({
         <Link href="/dashboard/settings">Settings</Link>
       </div>
 
-      {/* Main content */}
+      {/* Main Content */}
 
       <div className="main">
         {children}
