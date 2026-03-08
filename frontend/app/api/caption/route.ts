@@ -7,8 +7,15 @@ const openai = new OpenAI({
 })
 
 export async function POST(req: Request) {
+
   try {
-    const { topic } = await req.json()
+
+    const body = await req.json()
+    const topic = body.topic
+
+    if (!topic) {
+      return NextResponse.json({ error: "Topic missing" })
+    }
 
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
@@ -27,12 +34,16 @@ export async function POST(req: Request) {
       .insert([{ caption }])
 
     return NextResponse.json({
-      caption
+      caption: caption
     })
 
   } catch (error) {
+
+    console.log("API ERROR:", error)
+
     return NextResponse.json({
       error: "Failed to generate caption"
     })
   }
+
 }
