@@ -6,9 +6,9 @@ export default function CaptionPage() {
 
   const [topic, setTopic] = useState("")
   const [caption, setCaption] = useState("")
+  const [hashtags, setHashtags] = useState("")
   const [history, setHistory] = useState<string[]>([])
 
-  // Load saved captions when page loads
   useEffect(() => {
     const saved = localStorage.getItem("captions")
     if (saved) {
@@ -18,48 +18,59 @@ export default function CaptionPage() {
 
   const generateCaption = () => {
 
-    const newCaption = `Amazing post about ${topic}! 🚀 #content #socialmedia`
+    const newCaption = `Amazing post about ${topic}! 🚀`
+    const newTags = `#${topic.replaceAll(" ", "")} #contentcreator #socialmedia #growth #marketing`
 
     setCaption(newCaption)
+    setHashtags(newTags)
 
-    const updatedHistory = [newCaption, ...history]
+    const updatedHistory = [`${newCaption} ${newTags}`, ...history]
 
     setHistory(updatedHistory)
 
-    // Save to browser storage
     localStorage.setItem("captions", JSON.stringify(updatedHistory))
   }
 
+  const copyCaption = () => {
+    navigator.clipboard.writeText(`${caption} ${hashtags}`)
+    alert("Caption copied!")
+  }
+
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={{ padding:"20px" }}>
       <h1>AI Caption Generator</h1>
 
       <input
         placeholder="Enter topic..."
         value={topic}
         onChange={(e)=>setTopic(e.target.value)}
-        style={{ padding:"10px", width:"300px" }}
+        style={{ padding:"10px", width:"320px" }}
       />
 
       <br/><br/>
 
-      <button
-        onClick={generateCaption}
-        style={{ padding:"10px 20px" }}
-      >
+      <button onClick={generateCaption} style={{ padding:"10px 20px" }}>
         Generate Caption
       </button>
 
       <br/><br/>
 
       <h3>Generated Caption</h3>
+
       <p>{caption}</p>
+      <p>{hashtags}</p>
+
+      {caption && (
+        <button onClick={copyCaption} style={{ padding:"8px 15px" }}>
+          Copy Caption
+        </button>
+      )}
 
       <hr/>
 
       <h3>Saved Captions</h3>
 
-      {history.map((item, index)=>(
+      {history.map((item,index)=>(
         <p key={index}>{item}</p>
       ))}
 
