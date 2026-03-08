@@ -1,11 +1,11 @@
-/* MAIN LAYOUT */
+/* ===== DASHBOARD LAYOUT ===== */
 
 .dashboard-container{
 display:flex;
 min-height:100vh;
 }
 
-/* SIDEBAR */
+/* ===== SIDEBAR ===== */
 
 .sidebar{
 width:250px;
@@ -36,7 +36,7 @@ font-size:15px;
 color:white;
 }
 
-/* MAIN CONTENT */
+/* ===== MAIN CONTENT ===== */
 
 .main-content{
 margin-left:250px;
@@ -46,7 +46,7 @@ background:#f3f4f6;
 min-height:100vh;
 }
 
-/* MOBILE HEADER */
+/* ===== MOBILE HEADER ===== */
 
 .mobile-header{
 display:none;
@@ -67,23 +67,27 @@ border-radius:6px;
 cursor:pointer;
 }
 
-/* MOBILE RESPONSIVE */
+/* ===== MOBILE RESPONSIVE ===== */
 
 @media(max-width:768px){
 
+/* show header */
 .mobile-header{
 display:flex;
 }
 
+/* hide sidebar by default */
 .sidebar{
 left:-260px;
-transition:0.3s;
+transition:0.3s ease;
 }
 
+/* show sidebar when menu clicked */
 .sidebar.active{
 left:0;
 }
 
+/* content full width */
 .main-content{
 margin-left:0;
 padding:25px;
