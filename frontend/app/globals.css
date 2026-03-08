@@ -1,4 +1,4 @@
-/* ===== DASHBOARD LAYOUT ===== */
+/* ===== LAYOUT ===== */
 
 .dashboard-container{
 display:flex;
@@ -17,9 +17,29 @@ flex-direction:column;
 gap:18px;
 position:fixed;
 top:0;
-left:0;
 height:100vh;
 z-index:1000;
+transition:0.3s ease;
+}
+
+/* Desktop sidebar position */
+
+@media(min-width:769px){
+.sidebar{
+left:0;
+}
+}
+
+/* Mobile sidebar hidden */
+
+@media(max-width:768px){
+.sidebar{
+left:-260px;
+}
+
+.sidebar.active{
+left:0;
+}
 }
 
 .sidebar h2{
@@ -39,11 +59,20 @@ color:white;
 /* ===== MAIN CONTENT ===== */
 
 .main-content{
-margin-left:250px;
 flex:1;
+margin-left:250px;
 padding:40px;
 background:#f3f4f6;
 min-height:100vh;
+}
+
+/* Mobile content fix */
+
+@media(max-width:768px){
+.main-content{
+margin-left:0;
+padding:25px;
+}
 }
 
 /* ===== MOBILE HEADER ===== */
@@ -67,30 +96,8 @@ border-radius:6px;
 cursor:pointer;
 }
 
-/* ===== MOBILE RESPONSIVE ===== */
-
 @media(max-width:768px){
-
-/* show header */
 .mobile-header{
 display:flex;
 }
-
-/* hide sidebar by default */
-.sidebar{
-left:-260px;
-transition:0.3s ease;
-}
-
-/* show sidebar when menu clicked */
-.sidebar.active{
-left:0;
-}
-
-/* content full width */
-.main-content{
-margin-left:0;
-padding:25px;
-}
-
 }
