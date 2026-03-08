@@ -10,7 +10,10 @@ export default function CaptionPage() {
 
   const generateCaption = async () => {
 
-    if (!topic) return
+    if (!topic) {
+      alert("Please enter a topic")
+      return
+    }
 
     setLoading(true)
 
@@ -26,10 +29,17 @@ export default function CaptionPage() {
 
       const data = await res.json()
 
-      setCaption(data.caption)
+      if (data.caption) {
+        setCaption(data.caption)
+      } else {
+        alert(data.error || "API failed")
+      }
 
     } catch (error) {
-      console.error(error)
+
+      console.log(error)
+      alert("Something went wrong")
+
     }
 
     setLoading(false)
@@ -45,6 +55,7 @@ export default function CaptionPage() {
       <div style={{ marginTop: "20px" }}>
 
         <input
+          type="text"
           value={topic}
           onChange={(e) => setTopic(e.target.value)}
           placeholder="Enter topic..."
@@ -73,10 +84,35 @@ export default function CaptionPage() {
       </div>
 
       {caption && (
+
         <div style={{ marginTop: "30px" }}>
+
           <h3>Generated Caption</h3>
-          <p>{caption}</p>
+
+          <p style={{
+            background: "#f5f5f5",
+            padding: "15px",
+            borderRadius: "8px"
+          }}>
+            {caption}
+          </p>
+
+          <button
+            onClick={() => navigator.clipboard.writeText(caption)}
+            style={{
+              marginTop: "10px",
+              padding: "8px 12px",
+              background: "#111",
+              color: "white",
+              border: "none",
+              borderRadius: "6px"
+            }}
+          >
+            Copy Caption
+          </button>
+
         </div>
+
       )}
 
     </div>
