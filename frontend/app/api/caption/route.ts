@@ -6,9 +6,11 @@ const openai = new OpenAI({
 })
 
 export async function POST(req: Request) {
+
   try {
 
-    const { topic } = await req.json()
+    const body = await req.json()
+    const topic = body.topic
 
     if (!topic) {
       return NextResponse.json({
@@ -17,7 +19,7 @@ export async function POST(req: Request) {
     }
 
     const completion = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-4.1-mini",
       messages: [
         {
           role: "user",
@@ -29,16 +31,17 @@ export async function POST(req: Request) {
     const caption = completion.choices[0].message.content
 
     return NextResponse.json({
-      caption
+      caption: caption
     })
 
-  } catch (error) {
+  } catch (error: any) {
 
-    console.log("API ERROR:", error)
+    console.log("OPENAI ERROR:", error)
 
     return NextResponse.json({
-      error: "Failed to generate caption"
+      error: error.message || "OpenAI request failed"
     })
 
   }
+
 }
