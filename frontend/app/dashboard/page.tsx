@@ -12,22 +12,22 @@ export default function DashboardPage() {
   }, [])
 
   async function fetchStats() {
+
     const { count } = await supabase
       .from("captions")
       .select("*", { count: "exact", head: true })
 
-    if (count) {
-      setCaptionCount(count)
-    }
+    setCaptionCount(count || 0)
   }
 
   return (
-    <div>
-      <h1 style={{ fontSize: "32px", marginBottom: "10px" }}>
+    <div style={{ padding: "30px" }}>
+
+      <h1 style={{ fontSize: "28px", fontWeight: "bold" }}>
         Dashboard
       </h1>
 
-      <p style={{ color: "#666", marginBottom: "20px" }}>
+      <p style={{ color: "#666" }}>
         Welcome to Veltrix Social AI.
       </p>
 
@@ -39,42 +39,51 @@ export default function DashboardPage() {
           marginTop: "30px"
         }}
       >
+
         <div
           style={{
-            background: "white",
-            padding: "25px",
-            borderRadius: "12px",
-            boxShadow: "0 4px 10px rgba(0,0,0,0.05)"
+            background: "#fff",
+            padding: "20px",
+            borderRadius: "10px",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.05)"
           }}
         >
           <h3>Captions Generated</h3>
-          <h2>{captionCount}</h2>
+          <p style={{ fontSize: "28px", fontWeight: "bold" }}>
+            {captionCount}
+          </p>
         </div>
 
         <div
           style={{
-            background: "white",
-            padding: "25px",
-            borderRadius: "12px",
-            boxShadow: "0 4px 10px rgba(0,0,0,0.05)"
+            background: "#fff",
+            padding: "20px",
+            borderRadius: "10px",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.05)"
           }}
         >
           <h3>Content Plans</h3>
-          <h2>0</h2>
+          <p style={{ fontSize: "28px", fontWeight: "bold" }}>
+            0
+          </p>
         </div>
 
         <div
           style={{
-            background: "white",
-            padding: "25px",
-            borderRadius: "12px",
-            boxShadow: "0 4px 10px rgba(0,0,0,0.05)"
+            background: "#fff",
+            padding: "20px",
+            borderRadius: "10px",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.05)"
           }}
         >
           <h3>Scheduled Posts</h3>
-          <h2>0</h2>
+          <p style={{ fontSize: "28px", fontWeight: "bold" }}>
+            0
+          </p>
         </div>
+
       </div>
+
     </div>
   )
 }
