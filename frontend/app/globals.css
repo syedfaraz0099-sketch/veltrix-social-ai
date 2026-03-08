@@ -5,48 +5,52 @@
 }
 
 body{
-  font-family: system-ui, -apple-system, sans-serif;
-  background:#f4f6f8;
+  font-family:system-ui,-apple-system,sans-serif;
+  background:#f4f6f9;
   color:#111;
 }
 
+/* dashboard layout */
+
 .dashboard{
   display:flex;
+  min-height:100vh;
 }
 
 /* sidebar */
 
 .sidebar{
   width:240px;
-  background:#0f172a;
+  background:linear-gradient(180deg,#0f172a,#1e293b);
   color:white;
-  min-height:100vh;
-  padding:25px;
+  padding:30px 20px;
 }
 
 .sidebar h2{
   margin-bottom:40px;
+  font-size:22px;
 }
 
 .sidebar a{
   display:block;
+  padding:10px 0;
   color:#cbd5f5;
-  margin-bottom:16px;
   text-decoration:none;
+  font-size:15px;
 }
 
 .sidebar a:hover{
   color:white;
 }
 
-/* main content */
+/* main area */
 
 .main{
   flex:1;
   padding:40px;
 }
 
-/* cards */
+/* dashboard cards */
 
 .cards{
   display:grid;
@@ -59,7 +63,12 @@ body{
   background:white;
   padding:25px;
   border-radius:12px;
-  box-shadow:0 4px 14px rgba(0,0,0,0.08);
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+  transition:transform 0.2s;
+}
+
+.card:hover{
+  transform:translateY(-4px);
 }
 
 .card h3{
@@ -71,13 +80,24 @@ body{
   font-weight:bold;
 }
 
+/* inputs */
+
+input{
+  padding:10px;
+  border:1px solid #ddd;
+  border-radius:6px;
+  width:100%;
+  margin-top:10px;
+}
+
 /* buttons */
 
 button{
+  margin-top:10px;
+  padding:10px 18px;
+  border:none;
   background:#2563eb;
   color:white;
-  border:none;
-  padding:10px 18px;
   border-radius:6px;
   cursor:pointer;
 }
@@ -86,10 +106,23 @@ button:hover{
   background:#1d4ed8;
 }
 
-/* inputs */
+/* mobile responsive */
 
-input{
-  padding:10px;
-  border:1px solid #ddd;
-  border-radius:6px;
+@media(max-width:768px){
+
+  .dashboard{
+    flex-direction:column;
+  }
+
+  .sidebar{
+    width:100%;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  .main{
+    padding:20px;
+  }
+
 }
