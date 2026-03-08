@@ -1,3 +1,10 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
 /* DASHBOARD LAYOUT */
 
 .dashboard-container{
@@ -19,22 +26,22 @@ position:fixed;
 top:0;
 left:0;
 height:100vh;
-transition:0.3s;
+transition:0.3s ease;
 z-index:1000;
 }
 
-/* MOBILE SIDEBAR */
-
-@media(max-width:768px){
-
-.sidebar{
-left:-260px;
+.sidebar h2{
+margin-bottom:20px;
 }
 
-.sidebar.active{
-left:0;
+.sidebar a{
+color:#cbd5e1;
+text-decoration:none;
+font-size:15px;
 }
 
+.sidebar a:hover{
+color:white;
 }
 
 /* MAIN CONTENT */
@@ -47,13 +54,67 @@ background:#f3f4f6;
 min-height:100vh;
 }
 
-/* MOBILE MAIN CONTENT */
+/* MOBILE HEADER */
+
+.mobile-header{
+display:none;
+width:100%;
+background:white;
+padding:15px;
+align-items:center;
+gap:15px;
+border-bottom:1px solid #ddd;
+}
+
+.mobile-header button{
+background:#2563eb;
+color:white;
+border:none;
+padding:10px 12px;
+border-radius:6px;
+cursor:pointer;
+font-size:18px;
+}
+
+/* DASHBOARD CARDS */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+margin-top:30px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* MOBILE FIX */
 
 @media(max-width:768px){
+
+.mobile-header{
+display:flex;
+}
+
+.sidebar{
+left:-100%;
+}
+
+.sidebar.active{
+left:0;
+}
 
 .main-content{
 margin-left:0;
 padding:25px;
+}
+
+.cards{
+grid-template-columns:1fr;
 }
 
 }
