@@ -1,6 +1,26 @@
 "use client"
 
+import { useEffect, useState } from "react"
+import { supabase } from "@/lib/supabase"
+
 export default function DashboardPage() {
+
+  const [captionCount, setCaptionCount] = useState(0)
+
+  useEffect(() => {
+    fetchStats()
+  }, [])
+
+  async function fetchStats() {
+    const { count } = await supabase
+      .from("captions")
+      .select("*", { count: "exact", head: true })
+
+    if (count) {
+      setCaptionCount(count)
+    }
+  }
+
   return (
     <div>
       <h1 style={{ fontSize: "32px", marginBottom: "10px" }}>
@@ -28,7 +48,7 @@ export default function DashboardPage() {
           }}
         >
           <h3>Captions Generated</h3>
-          <h2>2</h2>
+          <h2>{captionCount}</h2>
         </div>
 
         <div
