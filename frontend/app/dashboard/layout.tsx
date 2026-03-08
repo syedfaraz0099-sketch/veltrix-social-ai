@@ -1,5 +1,6 @@
 <a href="/dashboard">Dashboard</a>
 <a href="/dashboard/caption">Caption Generator</a>
+<a href="/dashboard/captions">Caption History</a>
 <a href="/dashboard/planner">Content Planner</a>
 <a href="/dashboard/calendar">Calendar</a>
 <a href="/dashboard/ideas">Content Ideas</a>
