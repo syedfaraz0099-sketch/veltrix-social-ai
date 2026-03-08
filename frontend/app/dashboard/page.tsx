@@ -1,29 +1,54 @@
-export default function Dashboard() {
+export default function DashboardPage() {
   return (
     <div>
+      <h1 style={{ fontSize: "32px", marginBottom: "10px" }}>Dashboard</h1>
+      <p style={{ color: "#666", marginBottom: "30px" }}>
+        Welcome to Veltrix Social AI.
+      </p>
 
-      <h1 style={{fontSize:"32px",marginBottom:"10px"}}>Dashboard</h1>
-      <p style={{color:"#666"}}>Welcome to Veltrix Social AI.</p>
-
-      <div className="cards">
-
-        <div className="card">
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))",
+          gap: "20px",
+        }}
+      >
+        <div
+          style={{
+            background: "white",
+            padding: "25px",
+            borderRadius: "12px",
+            boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
+          }}
+        >
           <h3>Captions Generated</h3>
-          <p style={{fontSize:"26px",marginTop:"10px"}}>2</p>
+          <h2>2</h2>
         </div>
 
-        <div className="card">
+        <div
+          style={{
+            background: "white",
+            padding: "25px",
+            borderRadius: "12px",
+            boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
+          }}
+        >
           <h3>Content Plans</h3>
-          <p style={{fontSize:"26px",marginTop:"10px"}}>0</p>
+          <h2>0</h2>
         </div>
 
-        <div className="card">
+        <div
+          style={{
+            background: "white",
+            padding: "25px",
+            borderRadius: "12px",
+            boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
+          }}
+        >
           <h3>Scheduled Posts</h3>
-          <p style={{fontSize:"26px",marginTop:"10px"}}>0</p>
+          <h2>0</h2>
         </div>
-
       </div>
-
     </div>
   )
 }
