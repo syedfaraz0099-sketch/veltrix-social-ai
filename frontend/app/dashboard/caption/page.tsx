@@ -1,48 +1,55 @@
 "use client"
+
 import { useState } from "react"
 
 export default function CaptionPage() {
+
   const [topic, setTopic] = useState("")
   const [caption, setCaption] = useState("")
-  const [loading, setLoading] = useState(false)
+  const [history, setHistory] = useState<string[]>([])
 
-  const generateCaption = async () => {
-    setLoading(true)
+  const generateCaption = () => {
 
-    const res = await fetch("/api/caption", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ topic })
-    })
+    const newCaption = `Amazing post about ${topic}! 🚀 #content #socialmedia`
 
-    const data = await res.json()
-    setCaption(data.caption)
-    setLoading(false)
+    setCaption(newCaption)
+
+    setHistory([newCaption, ...history])
   }
 
   return (
-    <div>
+    <div style={{ padding: "20px" }}>
       <h1>AI Caption Generator</h1>
 
       <input
-        type="text"
         placeholder="Enter topic..."
         value={topic}
-        onChange={(e) => setTopic(e.target.value)}
-        style={{ padding: "10px", width: "350px" }}
+        onChange={(e)=>setTopic(e.target.value)}
+        style={{ padding:"10px", width:"300px" }}
       />
 
-      <br /><br />
+      <br/><br/>
 
-      <button onClick={generateCaption} style={{ padding: "10px 20px" }}>
-        {loading ? "Generating..." : "Generate Caption"}
+      <button
+        onClick={generateCaption}
+        style={{ padding:"10px 20px" }}
+      >
+        Generate Caption
       </button>
 
-      <br /><br />
+      <br/><br/>
 
+      <h3>Generated Caption</h3>
       <p>{caption}</p>
+
+      <hr/>
+
+      <h3>Saved Captions</h3>
+
+      {history.map((item, index)=>(
+        <p key={index}>{item}</p>
+      ))}
+
     </div>
   )
 }
