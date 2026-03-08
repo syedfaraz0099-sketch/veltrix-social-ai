@@ -1,44 +1,44 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { supabase } from "../../../lib/supabase"
+import { useState } from "react"
 
-export default function CaptionsPage() {
+export default function CaptionPage() {
+  const [topic, setTopic] = useState("")
+  const [caption, setCaption] = useState("")
 
-  const [captions, setCaptions] = useState<any[]>([])
+  const generateCaption = async () => {
+    const res = await fetch("/api/caption", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ topic })
+    })
 
-  async function loadCaptions() {
-
-    const { data } = await supabase
-      .from("captions")
-      .select("*")
-      .order("created_at", { ascending: false })
-
-    if (data) setCaptions(data)
-
+    const data = await res.json()
+    setCaption(data.caption)
   }
 
-  useEffect(() => {
-    loadCaptions()
-  }, [])
-
   return (
-    <div style={{ padding: "40px" }}>
-      <h1>Caption History</h1>
+    <div>
+      <h1>AI Caption Generator</h1>
 
-      {captions.map((item) => (
-        <div
-          key={item.id}
-          style={{
-            background: "#fff",
-            padding: "15px",
-            marginTop: "10px",
-            borderRadius: "8px"
-          }}
-        >
-          {item.caption}
+      <input
+        value={topic}
+        onChange={(e) => setTopic(e.target.value)}
+        placeholder="Enter topic..."
+      />
+
+      <button onClick={generateCaption}>
+        Generate Caption
+      </button>
+
+      {caption && (
+        <div>
+          <h3>Generated Caption</h3>
+          <p>{caption}</p>
         </div>
-      ))}
+      )}
     </div>
   )
 }
