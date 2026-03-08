@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export default function CaptionPage() {
 
@@ -8,13 +8,26 @@ export default function CaptionPage() {
   const [caption, setCaption] = useState("")
   const [history, setHistory] = useState<string[]>([])
 
+  // Load saved captions when page loads
+  useEffect(() => {
+    const saved = localStorage.getItem("captions")
+    if (saved) {
+      setHistory(JSON.parse(saved))
+    }
+  }, [])
+
   const generateCaption = () => {
 
     const newCaption = `Amazing post about ${topic}! 🚀 #content #socialmedia`
 
     setCaption(newCaption)
 
-    setHistory([newCaption, ...history])
+    const updatedHistory = [newCaption, ...history]
+
+    setHistory(updatedHistory)
+
+    // Save to browser storage
+    localStorage.setItem("captions", JSON.stringify(updatedHistory))
   }
 
   return (
