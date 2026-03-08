@@ -1,33 +1,38 @@
-<div className="sidebar">
+import Link from "next/link"
 
-<a href="/dashboard">Dashboard</a>
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <div style={{ display: "flex", minHeight: "100vh" }}>
+      
+      <aside
+        style={{
+          width: "220px",
+          background: "#0f172a",
+          color: "white",
+          padding: "20px",
+        }}
+      >
+        <h2 style={{ marginBottom: "20px" }}>Veltrix AI</h2>
 
-<a href="/dashboard/caption">
-Caption Generator
-</a>
+        <nav style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+          <Link href="/dashboard">Dashboard</Link>
+          <Link href="/dashboard/caption">Caption Generator</Link>
+          <Link href="/dashboard/planner">Content Planner</Link>
+          <Link href="/dashboard/calendar">Calendar</Link>
+          <Link href="/dashboard/ideas">Content Ideas</Link>
+          <Link href="/dashboard/analytics">Analytics</Link>
+          <Link href="/dashboard/settings">Settings</Link>
+        </nav>
+      </aside>
 
-<a href="/dashboard/captions">
-Caption History
-</a>
+      <main style={{ flex: 1, padding: "20px" }}>
+        {children}
+      </main>
 
-<a href="/dashboard/planner">
-Content Planner
-</a>
-
-<a href="/dashboard/calendar">
-Calendar
-</a>
-
-<a href="/dashboard/ideas">
-Content Ideas
-</a>
-
-<a href="/dashboard/analytics">
-Analytics
-</a>
-
-<a href="/dashboard/settings">
-Settings
-</a>
-
-</div>
+    </div>
+  )
+}
