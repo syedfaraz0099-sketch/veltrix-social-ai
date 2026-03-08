@@ -21,42 +21,65 @@ export default function DashboardPage() {
   }, [])
 
   return (
-    <div>
+    <div style={{ padding: "30px" }}>
 
-      <h1>Dashboard</h1>
-      <p>Welcome to Veltrix Social AI dashboard.</p>
+      <h1 style={{ marginBottom: "10px" }}>Dashboard</h1>
+      <p style={{ color: "#555" }}>
+        Welcome to Veltrix Social AI.
+      </p>
 
-      <div style={{
-        display:"flex",
-        gap:"20px",
-        marginTop:"30px"
-      }}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gap: "20px",
+          marginTop: "30px"
+        }}
+      >
 
-        <div style={{
-          border:"1px solid #ddd",
-          padding:"25px",
-          width:"200px"
-        }}>
+        {/* Card 1 */}
+        <div
+          style={{
+            background: "#fff",
+            padding: "25px",
+            borderRadius: "10px",
+            boxShadow: "0 2px 10px rgba(0,0,0,0.08)"
+          }}
+        >
           <h3>Captions Generated</h3>
-          <p style={{fontSize:"28px"}}>{captions}</p>
+          <p style={{ fontSize: "28px", marginTop: "10px" }}>
+            {captions}
+          </p>
         </div>
 
-        <div style={{
-          border:"1px solid #ddd",
-          padding:"25px",
-          width:"200px"
-        }}>
+        {/* Card 2 */}
+        <div
+          style={{
+            background: "#fff",
+            padding: "25px",
+            borderRadius: "10px",
+            boxShadow: "0 2px 10px rgba(0,0,0,0.08)"
+          }}
+        >
           <h3>Content Plans</h3>
-          <p style={{fontSize:"28px"}}>{plans}</p>
+          <p style={{ fontSize: "28px", marginTop: "10px" }}>
+            {plans}
+          </p>
         </div>
 
-        <div style={{
-          border:"1px solid #ddd",
-          padding:"25px",
-          width:"200px"
-        }}>
+        {/* Card 3 */}
+        <div
+          style={{
+            background: "#fff",
+            padding: "25px",
+            borderRadius: "10px",
+            boxShadow: "0 2px 10px rgba(0,0,0,0.08)"
+          }}
+        >
           <h3>Scheduled Posts</h3>
-          <p style={{fontSize:"28px"}}>{scheduled}</p>
+          <p style={{ fontSize: "28px", marginTop: "10px" }}>
+            {scheduled}
+          </p>
         </div>
 
       </div>
