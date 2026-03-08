@@ -1,4 +1,11 @@
-/* ===== LAYOUT ===== */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+/* ===== DASHBOARD LAYOUT ===== */
 
 .dashboard-container{
 display:flex;
@@ -22,7 +29,7 @@ z-index:1000;
 transition:0.3s ease;
 }
 
-/* Desktop sidebar position */
+/* Desktop position */
 
 @media(min-width:769px){
 .sidebar{
@@ -30,7 +37,7 @@ left:0;
 }
 }
 
-/* Mobile sidebar hidden */
+/* Mobile hidden */
 
 @media(max-width:768px){
 .sidebar{
@@ -66,8 +73,6 @@ background:#f3f4f6;
 min-height:100vh;
 }
 
-/* Mobile content fix */
-
 @media(max-width:768px){
 .main-content{
 margin-left:0;
@@ -99,5 +104,29 @@ cursor:pointer;
 @media(max-width:768px){
 .mobile-header{
 display:flex;
+}
+}
+
+/* ===== DASHBOARD CARDS ===== */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+margin-top:30px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Mobile cards */
+
+@media(max-width:768px){
+.cards{
+grid-template-columns:1fr;
 }
 }
