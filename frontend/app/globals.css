@@ -1,18 +1,11 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
-}
-
-/* ===== DASHBOARD LAYOUT ===== */
+/* DASHBOARD LAYOUT */
 
 .dashboard-container{
 display:flex;
 min-height:100vh;
 }
 
-/* ===== SIDEBAR ===== */
+/* SIDEBAR */
 
 .sidebar{
 width:250px;
@@ -24,22 +17,16 @@ flex-direction:column;
 gap:18px;
 position:fixed;
 top:0;
-height:100vh;
-z-index:1000;
-transition:0.3s ease;
-}
-
-/* Desktop position */
-
-@media(min-width:769px){
-.sidebar{
 left:0;
-}
+height:100vh;
+transition:0.3s;
+z-index:1000;
 }
 
-/* Mobile hidden */
+/* MOBILE SIDEBAR */
 
 @media(max-width:768px){
+
 .sidebar{
 left:-260px;
 }
@@ -47,23 +34,10 @@ left:-260px;
 .sidebar.active{
 left:0;
 }
+
 }
 
-.sidebar h2{
-margin-bottom:20px;
-}
-
-.sidebar a{
-color:#cbd5e1;
-text-decoration:none;
-font-size:15px;
-}
-
-.sidebar a:hover{
-color:white;
-}
-
-/* ===== MAIN CONTENT ===== */
+/* MAIN CONTENT */
 
 .main-content{
 flex:1;
@@ -73,60 +47,13 @@ background:#f3f4f6;
 min-height:100vh;
 }
 
+/* MOBILE MAIN CONTENT */
+
 @media(max-width:768px){
+
 .main-content{
 margin-left:0;
 padding:25px;
 }
-}
 
-/* ===== MOBILE HEADER ===== */
-
-.mobile-header{
-display:none;
-width:100%;
-background:white;
-padding:15px;
-align-items:center;
-gap:15px;
-border-bottom:1px solid #ddd;
-}
-
-.mobile-header button{
-background:#2563eb;
-color:white;
-border:none;
-padding:10px 12px;
-border-radius:6px;
-cursor:pointer;
-}
-
-@media(max-width:768px){
-.mobile-header{
-display:flex;
-}
-}
-
-/* ===== DASHBOARD CARDS ===== */
-
-.cards{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:25px;
-margin-top:30px;
-}
-
-.card{
-background:white;
-padding:25px;
-border-radius:10px;
-box-shadow:0 4px 10px rgba(0,0,0,0.05);
-}
-
-/* Mobile cards */
-
-@media(max-width:768px){
-.cards{
-grid-template-columns:1fr;
-}
 }
