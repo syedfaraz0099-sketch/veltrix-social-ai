@@ -1,7 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { supabase } from "../../lib/supabase"
+import { supabase } from "../../../lib/supabase"
+
 export default function CaptionPage() {
   const [topic, setTopic] = useState("")
   const [caption, setCaption] = useState("")
@@ -20,7 +21,7 @@ export default function CaptionPage() {
   }
 
   return (
-    <div>
+    <div style={{ padding: "20px" }}>
       <h1>AI Caption Generator</h1>
 
       <input
