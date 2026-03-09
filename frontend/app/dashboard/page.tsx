@@ -6,7 +6,8 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  ResponsiveContainer
+  CartesianGrid,
+  ResponsiveContainer,
 } from "recharts"
 
 const data = [
@@ -16,98 +17,65 @@ const data = [
   { day: "Thu", captions: 7 },
   { day: "Fri", captions: 4 },
   { day: "Sat", captions: 6 },
-  { day: "Sun", captions: 8 }
+  { day: "Sun", captions: 8 },
 ]
 
-export default function DashboardPage() {
-
+export default function Dashboard() {
   return (
+    <div className="p-10 space-y-8">
 
-    <div style={{ padding: "30px" }}>
+      {/* Header */}
+      <div>
+        <h1 className="text-3xl font-bold">Dashboard</h1>
+        <p className="text-slate-500">Welcome to Veltrix Social AI</p>
+      </div>
 
-      <h1 style={{
-        fontSize: "32px",
-        fontWeight: "bold"
-      }}>
-        Dashboard
-      </h1>
+      {/* Stats Cards */}
+      <div className="grid grid-cols-3 gap-6">
 
-      <p style={{ color: "gray" }}>
-        Welcome to Veltrix Social AI
-      </p>
-
-      {/* Stat cards */}
-
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))",
-          gap: "20px",
-          marginTop: "30px"
-        }}
-      >
-
-        <div style={card("#6366f1")}>
-          <h3>Captions Generated</h3>
-          <h1>12</h1>
+        <div className="bg-gradient-to-r from-indigo-500 to-indigo-600 text-white rounded-xl p-6 shadow-lg">
+          <h3 className="text-sm">Captions Generated</h3>
+          <p className="text-3xl font-bold">12</p>
         </div>
 
-        <div style={card("#22c55e")}>
-          <h3>Content Plans</h3>
-          <h1>3</h1>
+        <div className="bg-green-500 text-white rounded-xl p-6 shadow-lg">
+          <h3 className="text-sm">Content Plans</h3>
+          <p className="text-3xl font-bold">3</p>
         </div>
 
-        <div style={card("#f59e0b")}>
-          <h3>Scheduled Posts</h3>
-          <h1>5</h1>
+        <div className="bg-orange-500 text-white rounded-xl p-6 shadow-lg">
+          <h3 className="text-sm">Scheduled Posts</h3>
+          <p className="text-3xl font-bold">5</p>
         </div>
 
       </div>
 
-      {/* Chart */}
+      {/* Chart Section */}
+      <div className="bg-white rounded-xl p-6 shadow-md">
 
-      <div
-        style={{
-          marginTop: "40px",
-          background: "white",
-          padding: "20px",
-          borderRadius: "10px",
-          boxShadow: "0 5px 15px rgba(0,0,0,0.08)"
-        }}
-      >
-
-        <h3 style={{ marginBottom: "20px" }}>
+        <h2 className="text-lg font-semibold mb-4">
           Weekly Caption Activity
-        </h3>
+        </h2>
 
-        <ResponsiveContainer width="100%" height={300}>
-          <LineChart data={data}>
-            <XAxis dataKey="day" />
-            <YAxis />
-            <Tooltip />
-            <Line
-              type="monotone"
-              dataKey="captions"
-              stroke="#6366f1"
-              strokeWidth={3}
-            />
-          </LineChart>
-        </ResponsiveContainer>
+        <div style={{ width: "100%", height: 300 }}>
+          <ResponsiveContainer>
+            <LineChart data={data}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="day" />
+              <YAxis />
+              <Tooltip />
+              <Line
+                type="monotone"
+                dataKey="captions"
+                stroke="#6366f1"
+                strokeWidth={3}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
 
       </div>
 
     </div>
   )
-}
-
-function card(color: string) {
-
-  return {
-    background: color,
-    color: "white",
-    padding: "20px",
-    borderRadius: "12px",
-    boxShadow: "0 8px 20px rgba(0,0,0,0.15)"
-  }
-
 }
